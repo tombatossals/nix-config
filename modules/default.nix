@@ -9,6 +9,9 @@
     ./system/state-version.nix
     ./system/users.nix
 
+    ./system/packages.nix
+    ./system/editors.nix
+
     ./services/openssh.nix
   ];
 }

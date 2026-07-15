@@ -7,6 +7,7 @@
     ./hardware-configuration.nix
     ./disko.nix
     ./networking.nix
+    ./home.nix
 
     ../../modules
   ];

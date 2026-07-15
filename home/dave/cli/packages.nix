@@ -1,0 +1,41 @@
+{ pkgs, ... }:
+
+{
+  home.packages = with pkgs; [
+    aria2
+    bat
+    bottom
+    cmatrix
+    duf
+    dust
+    eza
+    fastfetch
+    fd
+    ffmpeg
+    fzf
+    gnupg
+    jq
+    hyperfine
+    imagemagick
+    just
+    lazygit
+    lftp
+    lsof
+    ncdu
+    nmap
+    ouch
+    p7zip
+    pass
+    pinentry-curses
+    pv
+    rclone
+    ripgrep
+    tldr
+    tmux
+    xz
+    yazi
+    yt-dlp
+    zoxide
+    zstd
+  ];
+}
