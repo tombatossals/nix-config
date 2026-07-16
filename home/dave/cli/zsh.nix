@@ -1,5 +1,4 @@
 { config, ... }:
-
 {
   programs.zsh = {
     enable = true;
@@ -21,12 +20,21 @@
     dotDir = "${config.xdg.configHome}/zsh";
 
     initContent = ''
+      bindkey -e
+
       bindkey '^[[H' beginning-of-line
       bindkey '^[[F' end-of-line
 
       setopt AUTO_CD
       setopt INTERACTIVE_COMMENTS
       setopt SHARE_HISTORY
+
+      # Mostrar fastfetch solo en terminales interactivas locales
+      if [[ -o interactive ]] \
+        && [[ "$TERM" != "dumb" ]] \
+        && command -v fastfetch >/dev/null; then
+        fastfetch
+      fi
     '';
 
     loginExtra = ''
