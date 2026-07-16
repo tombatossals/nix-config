@@ -6,9 +6,10 @@
     ./bat.nix
     ./eza.nix
     ./environment.nix
-    ./fastfetch.nix
+    ./fastfetch
     ./fzf.nix
     ./git.nix
+    ./vim.nix
     ./packages.nix
     ./tmux.nix
     ./starship.nix
