@@ -4,7 +4,7 @@
   imports = [
     ./graphics
     ./fonts
-    ./greetd
+    ./display-manager
     ./hyprland
     ./pipewire
     ./xdg
