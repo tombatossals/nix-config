@@ -5,6 +5,8 @@
     isNormalUser = true;
     description = "David Rubert";
 
+    shell = pkgs.zsh;
+
     extraGroups = [
       "wheel"
       "networkmanager"

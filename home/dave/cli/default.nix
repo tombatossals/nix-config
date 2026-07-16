@@ -10,6 +10,7 @@
     ./git.nix
     ./packages.nix
     ./tmux.nix
+    ./starship.nix
     ./yazi.nix
     ./zoxide.nix
     ./zsh.nix
