@@ -3,34 +3,41 @@
 {
   programs.vim = {
     enable = true;
-    defaultEditor = false;
-
-    settings = {
-      number = true;
-      expandtab = true;
-      tabstop = 2;
-      shiftwidth = 2;
-      softtabstop = 2;
-      autoindent = true;
-      smartindent = true;
-      ignorecase = true;
-      smartcase = true;
-      hlsearch = true;
-      incsearch = true;
-      mouse = "a";
-    };
 
     extraConfig = ''
+      " Apariencia
+      syntax on
+      set number
       set relativenumber
       set cursorline
+
+      " Indentación
+      set expandtab
+      set tabstop=2
+      set shiftwidth=2
+      set softtabstop=2
+      set autoindent
+      set smartindent
+
+      " Búsqueda
+      set ignorecase
+      set smartcase
+      set hlsearch
+      set incsearch
+
+      " Navegación
+      set mouse=a
       set scrolloff=8
       set signcolumn=yes
       set nowrap
+
+      " Ventanas
       set splitbelow
       set splitright
+
+      " Ficheros
       set undofile
 
-      syntax on
       filetype plugin indent on
     '';
   };
