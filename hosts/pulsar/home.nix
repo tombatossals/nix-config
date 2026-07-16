@@ -9,6 +9,10 @@
     useGlobalPkgs = true;
     useUserPackages = true;
 
+    extraSpecialArgs = {
+      inherit inputs;
+    };
+
     users.dave = import ../../home/dave;
   };
 }
