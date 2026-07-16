@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./graphics
     ./fonts
     ./greetd
     ./hyprland
