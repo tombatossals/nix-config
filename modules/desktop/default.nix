@@ -4,7 +4,7 @@
   imports = [
     ./fonts
     ./greetd
-    ./niri
+    ./hyprland
     ./pipewire
     ./xdg
   ];
