@@ -28,5 +28,13 @@
       setopt INTERACTIVE_COMMENTS
       setopt SHARE_HISTORY
     '';
+
+    loginExtra = ''
+      if [ -z "$DISPLAY" ] \
+        && [ "${XDG_VTNR:-}" = "1" ] \
+        && [ -z "$SSH_CONNECTION" ]; then
+          exec Hyprland
+      fi
+    '';
   };
 }

@@ -3,6 +3,7 @@
 {
   imports = [
     ./boot.nix
+    ./autologin.nix
     ./editors.nix
     ./gc.nix
     ./locale.nix
