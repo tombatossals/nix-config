@@ -9,7 +9,6 @@
     duf
     dust
     eza
-    fastfetch
     fd
     ffmpeg
     fzf

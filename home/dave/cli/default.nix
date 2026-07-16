@@ -6,6 +6,7 @@
     ./bat.nix
     ./eza.nix
     ./environment.nix
+    ./fastfetch.nix
     ./fzf.nix
     ./git.nix
     ./packages.nix

@@ -1,0 +1,100 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "display": {
+    "color": {
+      "separator": "38;2;95;135;135"
+    },
+    "separator": "  "
+  },
+  "logo": {
+    "padding": {
+      "left": 2,
+      "right": 4,
+      "top": 1
+    }
+  },
+  "modules": [
+    "break",
+    {
+      "color": {
+        "at": "white",
+        "host": "green",
+        "user": "38;2;95;135;135"
+      },
+      "type": "title"
+    },
+    "break",
+    {
+      "key": " ╭─ ",
+      "keyColor": "38;2;0;215;135",
+      "type": "os"
+    },
+    {
+      "key": " ├─ ",
+      "keyColor": "38;2;0;215;135",
+      "type": "kernel"
+    },
+    {
+      "key": " ╰─ 󰏗",
+      "keyColor": "38;2;0;215;135",
+      "type": "packages"
+    },
+    "break",
+    {
+      "key": " ╭─ ",
+      "keyColor": "38;2;224;107;116",
+      "type": "terminal"
+    },
+    {
+      "key": " ╰─ ",
+      "keyColor": "38;2;224;107;116",
+      "type": "shell"
+    },
+    "break",
+    {
+      "key": " ╭─ ",
+      "keyColor": "38;2;95;135;255",
+      "type": "host"
+    },
+    {
+      "key": " ├─ 󰍛",
+      "keyColor": "38;2;95;135;255",
+      "type": "cpu"
+    },
+    {
+      "key": " ├─ ",
+      "keyColor": "38;2;95;135;255",
+      "type": "memory"
+    },
+    {
+      "folders": [
+        "/"
+      ],
+      "format": "{size-used} / {size-total} ({size-percentage})",
+      "key": " ╰─ 󰋊",
+      "keyColor": "38;2;95;135;255",
+      "type": "disk",
+      "useAvailable": true
+    },
+    "break",
+    {
+      "defaultRouteOnly": true,
+      "key": " ╭─ 󰩟",
+      "keyColor": "38;2;0;175;215",
+      "showIpv4": true,
+      "showIpv6": false,
+      "type": "localip"
+    },
+    {
+      "key": " ╰─ 󰖟",
+      "keyColor": "38;2;0;175;215",
+      "type": "publicip"
+    },
+    "break",
+    {
+      "key": "  󰄉",
+      "keyColor": "38;2;0;175;95",
+      "type": "uptime"
+    }
+  ]
+}
