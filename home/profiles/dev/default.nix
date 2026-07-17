@@ -10,5 +10,6 @@
     ./python.nix
     ./rust.nix
     ./lazyvim.nix
+    ./nginx.nix
   ];
 }
