@@ -11,6 +11,7 @@
 
     extraSpecialArgs = {
       inherit inputs;
+      rebuildCommand = "sudo nixos-rebuild switch --flake ~/nix-config#pulsar";
     };
 
     users.dave = import ../../home/dave;

@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, rebuildCommand, ... }:
 
 {
   programs.zsh.shellAliases = {
@@ -26,10 +26,7 @@
     ta = "tmux attach";
     tls = "tmux ls";
 
-    # rebuild (ya que usamos flakes)
-    ns = "sudo nixos-rebuild switch --flake ~/nix-config#pulsar";
-    nb = "sudo nixos-rebuild boot --flake ~/nix-config#pulsar";
-    nt = "sudo nixos-rebuild test --flake ~/nix-config#pulsar";
     nc = "nix flake check ~/nix-config";
+    rebuild = rebuildCommand;
   };
 }

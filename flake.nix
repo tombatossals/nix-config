@@ -26,8 +26,9 @@
         system = "aarch64-linux";
 
         specialArgs = {
-          inherit inputs;
-          inherit (inputs) self;
+          inherit inputs self;
+          hostName = "pulsar";
+          isNixOS = true;
         };
 
         modules = [
@@ -44,7 +45,11 @@
           system = "aarch64-darwin";
         };
 
-        extraSpecialArgs = { inherit inputs self; };
+        extraSpecialArgs = { 
+          inherit inputs self;
+          hostName = "ares";
+          isNixOS = false;
+        };
 
         modules = [
           ./hosts/ares/home.nix

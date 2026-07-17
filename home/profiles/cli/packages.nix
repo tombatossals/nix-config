@@ -20,6 +20,7 @@
     lazygit
     lftp
     lsof
+    mpv
     ncdu
     nmap
     ouch
