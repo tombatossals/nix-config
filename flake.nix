@@ -41,13 +41,13 @@
       "dave@ares" = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
           system = "aarch64-darwin";
-	    config = {
-	      allowUnfreePredicate = pkg:
-	        builtins.elem (nixpkgs.lib.getName pkg) [
-		  "oracle-instantclient"
-	      ];
+          config = {
+            allowUnfreePredicate = pkg:
+              builtins.elem (nixpkgs.lib.getName pkg) [
+                "oracle-instantclient"
+              ];
+            };
           };
-        };
 
         extraSpecialArgs = { 
           inherit inputs self;
@@ -58,6 +58,22 @@
           ./hosts/ares/home.nix
         ];
       };
+
+      "dave@hades" = home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs {
+          system = "x86_64-linux";
+        };
+
+        extraSpecialArgs = {
+          inherit inputs self;
+          rebuildCommand = "nix run github:nix-community/home-manager/release-26.05 -- switch --flake ~/nix-config#dave@hades";
+        };
+
+        modules = [
+          ./hosts/hades/home.nix
+        ];
+      };
     };
+
   };
 }
