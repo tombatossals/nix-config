@@ -1,11 +1,13 @@
-{ inputs, ... }:
+{ ... }:
 
 {
   imports = [
-    ./cli
-    ./dev
-    ./gui
+    ../profiles/cli
+    ../profiles/dev
+    ../profiles/gui
   ];
+
+  home.username = "dave";
 
   xdg.enable = true;
 

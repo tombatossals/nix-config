@@ -20,7 +20,7 @@
     };
   };
 
-  outputs = inputs @ { nixpkgs, ... }: {
+  outputs = inputs @ { self, nixpkgs, home-manager, ... }: {
     nixosConfigurations = {
       pulsar = nixpkgs.lib.nixosSystem {
         system = "aarch64-linux";
@@ -34,6 +34,20 @@
           inputs.home-manager.nixosModules.home-manager
 
           ./hosts/pulsar
+        ];
+      };
+    };
+
+    homeConfigurations = {
+      "dave@ares" = home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs {
+          system = "aarch64-darwin";
+        };
+
+        extraSpecialArgs = { inherit inputs self; };
+
+        modules = [
+          ./hosts/ares/home.nix
         ];
       };
     };
