@@ -27,8 +27,6 @@
 
         specialArgs = {
           inherit inputs self;
-          hostName = "pulsar";
-          isNixOS = true;
         };
 
         modules = [
@@ -43,12 +41,17 @@
       "dave@ares" = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
           system = "aarch64-darwin";
+	    config = {
+	      allowUnfreePredicate = pkg:
+	        builtins.elem (nixpkgs.lib.getName pkg) [
+		  "oracle-instantclient"
+	      ];
+          };
         };
 
         extraSpecialArgs = { 
           inherit inputs self;
-          hostName = "ares";
-          isNixOS = false;
+          rebuildCommand = "nix run github:nix-community/home-manager/release-26.05 -- switch --flake ~/nix-config#dave@ares";
         };
 
         modules = [
