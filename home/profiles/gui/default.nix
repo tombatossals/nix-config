@@ -2,18 +2,17 @@
 {
   imports = [
     ./hyprland.nix
-    ./waybar
     ./ghostty.nix
     ./kitty.nix
     ./foot.nix
+    ./waybar
+    ./hyprlock
   ];
 
   home.packages = with pkgs; [
-    playerctl
-    brightnessctl
-    pamixer
-    blueman
+
+    fuzzel
+    mako
     wl-clipboard
-    cliphist
   ];
 }
