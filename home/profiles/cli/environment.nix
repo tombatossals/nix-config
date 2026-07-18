@@ -13,6 +13,9 @@
     LD_LIBRARY_PATH = "${config.home.profileDirectory}/lib";
     NODE_PATH = "${config.home.homeDirectory}/.npm-packages/lib/node_modules";
 
+    LANG = "es_ES.UTF-8";
+    LC_ALL = "es_ES.UTF-8";
+
   };
 
   home.sessionPath = [
