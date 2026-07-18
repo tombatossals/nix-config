@@ -4,7 +4,7 @@
   imports = [
     ../profiles/cli
     ../profiles/dev
-    #../profiles/gui
+    ../profiles/gui
   ];
 
   home.username = "dave";

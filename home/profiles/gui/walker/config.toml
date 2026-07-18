@@ -1,0 +1,39 @@
+# Tema
+theme = "default"
+
+# Ventana
+width = 700
+height = 600
+
+# Barra de búsqueda
+placeholder = "Buscar..."
+
+# Comportamiento
+close_when_open = true
+show_icons = true
+
+# Lista
+max_entries = 10
+
+# Módulos
+[plugins.applications]
+enabled = true
+
+[plugins.commands]
+enabled = true
+
+[plugins.calc]
+enabled = true
+
+[plugins.files]
+enabled = true
+
+[plugins.symbols]
+enabled = true
+
+[plugins.websearch]
+enabled = true
+provider = "duckduckgo"
+
+[plugins.clipboard]
+enabled = false

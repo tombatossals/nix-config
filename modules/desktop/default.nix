@@ -8,5 +8,6 @@
     ./pipewire
     ./xdg
     ./hyprland
+    ./niri
   ];
 }

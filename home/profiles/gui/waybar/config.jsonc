@@ -1,49 +1,31 @@
 {
-  "layer": "top",
-  "position": "top",
-  "height": 30,
-
-  "modules-left": [
-    "hyprland/workspaces"
-  ],
-
-  "modules-center": [
-    "clock"
-  ],
-
-  "modules-right": [
-    "pulseaudio",
-    "network",
-    "cpu",
-    "memory",
-    "battery",
-    "tray"
-  ],
-
-  "clock": {
-    "format": "{:%H:%M}"
-  },
-
-  "network": {
-    "format-wifi": "  {signalStrength}%",
-    "format-ethernet": "󰈀",
-    "format-disconnected": "󰖪"
-  },
-
-  "pulseaudio": {
-    "format": "{volume}% ",
-    "format-muted": "󰝟"
-  },
-
-  "cpu": {
-    "format": " {usage}%"
-  },
-
-  "memory": {
-    "format": " {}%"
-  },
-
-  "battery": {
-    "format": "{capacity}%"
-  }
+    "layer": "top",
+    "modules-left": ["pulseaudio", "cava"],
+    "modules-center": ["clock", "hyprland/workspaces", "clock#right"],
+    "modules-right": ["battery"],
+    "sway/window": {
+        "max-length": 50
+    },
+    "battery": {
+        "format": "{capacity}% {icon}",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "clock": {
+        "format-alt": "{:%a, %d. %b  %H:%M}"
+    },
+    "hyprland/workspaces": {
+	    "format": "{name}",
+      "format-icons": {
+	      "1": "",
+	      "2": "",
+        "3": "",
+        "4": "",
+        "5": "",
+        "active": "",
+        "default": ""
+      },
+      "persistent-workspaces": {
+        "*": 5 // 5 workspaces by default on every monitor
+      }
+    }
 }
