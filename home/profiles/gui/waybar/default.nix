@@ -1,6 +1,9 @@
 { config, pkgs, ... }:
 
 {
+  xdg.configFile."waybar/colors/gruvbox-material.css".source =
+    ./colors/gruvbox-material.css;
+
   programs.waybar = {
     enable = true;
 

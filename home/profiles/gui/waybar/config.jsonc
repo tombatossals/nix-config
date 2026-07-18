@@ -1,5 +1,6 @@
 {
     "layer": "top",
+    "width": 1000,
     "modules-left": ["pulseaudio", "cava"],
     "modules-center": ["clock", "hyprland/workspaces", "clock#right"],
     "modules-right": ["battery"],
@@ -11,7 +12,10 @@
         "format-icons": ["", "", "", "", ""]
     },
     "clock": {
-        "format-alt": "{:%a, %d. %b  %H:%M}"
+        "format-alt": "{:%H}"
+    },
+    "clock#right": {
+        "format-alt": "{:%M}"
     },
     "hyprland/workspaces": {
 	    "format": "{name}",
@@ -25,7 +29,34 @@
         "default": ""
       },
       "persistent-workspaces": {
-        "*": 5 // 5 workspaces by default on every monitor
+        "*": 5
       }
+    },
+    "battery": {
+      "interval": 60,
+      "format": "{icon} {capacity}%",
+    	"format-icons": {
+        "default": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+        "charging": ["󰢟", "󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"]
+      }
+    },
+    "pulseaudio": {
+      "format": "{icon} {volume}%",
+      "format-bluetooth": "{volume}% {icon}",
+      "format-muted": "",
+      "format-icons": {
+        "alsa_output.pci-0000_00_1f.3.analog-stereo": "",
+        "alsa_output.pci-0000_00_1f.3.analog-stereo-muted": "",
+        "headphone": "",
+        "hands-free": "󰂑",
+        "headset": "󰂑",
+        "phone": "",
+        "phone-muted": "",
+        "portable": "",
+        "car": "",
+        "default": ["", ""]
+      },
+      "scroll-step": 1,
+      "on-click": "pavucontrol"
     }
 }

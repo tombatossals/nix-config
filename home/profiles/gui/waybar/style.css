@@ -1,32 +1,47 @@
+@import "colors/gruvbox-material.css";
+
 * {
-    border: none;
-    border-radius: 0;
-    font-family: JetBrainsMono Nerd Font;
-    font-size: 13px;
-    min-height: 0;
+  all: unset;
+  font-family: "Iosevka Nerd Font Propo", monospace;
 }
 
 window#waybar {
-    background: rgba(30, 30, 46, 0.95);
-    color: #cdd6f4;
+  background-color: @bg0;
+  color: @fg;
+  border-radius: 0 0 10px 10px;
+}
+
+#workspaces {
+  margin: 0 8px;
+  font-size: 0.4rem;
 }
 
 #workspaces button {
-    padding: 0 8px;
-    color: #cdd6f4;
+  background: @bg4;
+  color: transparent;
+  min-width: 16px;
+  min-height: 5px;
+  margin: 6px 3px;
+  padding: 0;
+  border-radius: 6px;
 }
 
 #workspaces button.active {
-    background: #89b4fa;
-    color: #1e1e2e;
+  background: @blue;
+  min-width: 24px;
 }
 
 #clock,
-#network,
-#pulseaudio,
-#cpu,
-#memory,
-#battery,
-#tray {
-    padding: 0 10px;
+#clock#right {
+  margin: 0 15px;
+  font-weight: 700;
+  font-size: 1.12rem;
+}
+
+.modules-left {
+  margin-left: 12px;
+}
+
+.modules-right {
+  margin-right : 12px;
 }
