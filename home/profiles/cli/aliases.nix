@@ -8,6 +8,9 @@
     la = "eza -lah --git";
     lt = "eza --tree";
 
+    lrt = "eza -lg --sort=modified";
+    lrs = "eza -lg --sort=size";
+
     # navegación
     ".." = "cd ..";
     "..." = "cd ../..";
