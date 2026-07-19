@@ -7,6 +7,8 @@
     ll = "eza -lh --git";
     la = "eza -lah --git";
     lt = "eza --tree";
+    lrt = "eza -lg --sort=modified";
+    lrs = "eza -lg --sort=size";
 
     lrt = "eza -lg --sort=modified";
     lrs = "eza -lg --sort=size";
