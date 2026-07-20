@@ -6,6 +6,6 @@
     ../../home/platforms/darwin
   ];
 
-  home.username = "dave";
-  home.homeDirectory = "/Users/dave";
+  home.username = "vrubert";
+  home.homeDirectory = "/Users/vrubert";
 }

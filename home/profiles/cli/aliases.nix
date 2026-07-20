@@ -10,9 +10,6 @@
     lrt = "eza -lg --sort=modified";
     lrs = "eza -lg --sort=size";
 
-    lrt = "eza -lg --sort=modified";
-    lrs = "eza -lg --sort=size";
-
     # navegación
     ".." = "cd ..";
     "..." = "cd ../..";

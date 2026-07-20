@@ -7,8 +7,6 @@
     #../profiles/gui
   ];
 
-  home.username = "dave";
-
   xdg.enable = true;
 
   home.stateVersion = "26.05";
