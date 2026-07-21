@@ -18,6 +18,11 @@
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ { self, nixpkgs, home-manager, ... }: {
@@ -33,6 +38,21 @@
           inputs.home-manager.nixosModules.home-manager
 
           ./hosts/pulsar
+        ];
+      };
+
+      mimir = nixpkgs.lib.nixosSystem {
+        system = "aarch64-linux";
+
+        specialArgs = {
+          inherit inputs self;
+          host = "mimir";
+        };
+
+        modules = [
+          inputs.home-manager.nixosModules.home-manager
+
+          ./hosts/mimir
         ];
       };
     };
