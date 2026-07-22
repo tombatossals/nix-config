@@ -9,7 +9,6 @@
 
     extraGroups = [
       "wheel"
-      "networkmanager"
     ];
 
     initialPassword = "perico";

@@ -3,10 +3,13 @@
 {
   imports = [
     inputs.agenix.nixosModules.default
+    inputs.disko.nixosModules.disko
 
     ./hardware-configuration.nix
+    ./disko.nix
     ./boot.nix
     ./users.nix
+    ./networking.nix
     ./home.nix
     ./services
 
@@ -16,7 +19,6 @@
     ../../modules/system/editors.nix
     ../../modules/system/gc.nix
     ../../modules/system/locale.nix
-    ../../modules/system/networking.nix
     ../../modules/system/nix.nix
     ../../modules/system/packages.nix
     ../../modules/system/state-version.nix
@@ -26,6 +28,4 @@
     ../../modules/services/openssh
     ../../modules/services/podman
   ];
-
-  networking.hostName = "mimir";
 }
