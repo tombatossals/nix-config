@@ -14,6 +14,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    herdr = {
+      url = "github:ogulcancelik/herdr";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -25,7 +30,7 @@
     };
   };
 
-  outputs = inputs @ { self, nixpkgs, home-manager, ... }: {
+  outputs = inputs @ { self, nixpkgs, home-manager, herdr, ... }: {
     nixosConfigurations = {
       pulsar = nixpkgs.lib.nixosSystem {
         system = "aarch64-linux";

@@ -6,6 +6,7 @@
     ./database.nix
     ./cpp.nix
     ./go.nix
+    ./herdr.nix
     ./node.nix
     ./python.nix
     ./rust.nix
