@@ -4,10 +4,10 @@ Mejoras detectadas en la revisión de arquitectura y paquetes, pendientes de apl
 
 ## 1. Seguridad (lo primero)
 
-- [ ] **Contraseña de Pi-hole en claro** — `hosts/mimir/services/pihole.nix` tiene `FTLCONF_webserver_api_password = "perico123"` en el repo y en la Nix store (legible por cualquier usuario). Pasarla a agenix e inyectarla con `environmentFiles`, igual que hace `cloudflared.nix`.
-- [ ] **`secrets/secrets.nix` tiene claves placeholder** (`AAAA_SUSTITUYE...`). Tal como está, `agenix -e` y el re-keying no funcionan. Poner las claves públicas reales (usuario admin + host mimir).
-- [ ] **Contraseña de msmtp imperativa** — `passwordeval = "cat /etc/nixos/msmtp-password"` depende de un fichero que nadie gestiona; en una reinstalación el correo deja de funcionar en silencio. Migrar a agenix.
-- [ ] **Endurecer acceso** — combinación peligrosa: SSH con `PasswordAuthentication = true` (`modules/services/openssh`), sudo sin contraseña (`modules/system/sudo.nix`) e `initialPassword = "perico"` público en el repo. En mimir (con túnel de Cloudflare) adivinar una contraseña trivial da root. Pasar a SSH solo con clave (`authorizedKeys` declarativas) y `hashedPasswordFile` vía agenix.
+- [x] **Contraseña de Pi-hole en claro** — `hosts/mimir/services/pihole.nix` tiene `FTLCONF_webserver_api_password = "perico123"` en el repo y en la Nix store (legible por cualquier usuario). Pasarla a agenix e inyectarla con `environmentFiles`, igual que hace `cloudflared.nix`.
+- [x] **`secrets/secrets.nix` tiene claves placeholder** (`AAAA_SUSTITUYE...`). Tal como está, `agenix -e` y el re-keying no funcionan. Poner las claves públicas reales (usuario admin + host mimir).
+- [ ] **Contraseña de msmtp imperativa** — `passwordeval = "cat /etc/nixos/msmtp-password"` depende de un fichero que nadie gestiona; en una reinstalación el correo deja de funcionar en silencio. Migrar a agenix. *(Diferida: falta la app-password de Gmail; se editará con `agenix -e`.)*
+- [x] **Endurecer acceso** — combinación peligrosa: SSH con `PasswordAuthentication = true` (`modules/services/openssh`), sudo sin contraseña (`modules/system/sudo.nix`) e `initialPassword = "perico"` público en el repo. En mimir (con túnel de Cloudflare) adivinar una contraseña trivial da root. Pasar a SSH solo con clave (`authorizedKeys` declarativas) y `hashedPasswordFile` vía agenix. *(Nota: pulsar usa `hashedPassword` comiteado porque aún no tiene agenix; sudo sin contraseña se mantiene, ya cubierto por SSH solo-clave.)*
 
 ## 2. Arquitectura
 
