@@ -32,6 +32,7 @@
     ripgrep
     tldr
     tmux
+    tree
     xz
     yazi
     yt-dlp
