@@ -5,6 +5,7 @@
     ./cpp.nix
     ./direnv.nix
     ./database.nix
+    ./gh.nix
     ./go.nix
     #./herdr.nix
     ./lazyvim.nix
