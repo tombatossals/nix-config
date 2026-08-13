@@ -22,6 +22,7 @@
     lsof
     mpv
     ncdu
+    #netwatch
     nmap
     ouch
     p7zip
