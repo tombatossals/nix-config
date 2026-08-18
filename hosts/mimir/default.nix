@@ -20,7 +20,6 @@
     ../../modules/system/gc.nix
     ../../modules/system/locale.nix
     ../../modules/system/nix.nix
-    ../../modules/system/packages.nix
     ../../modules/system/state-version.nix
     ../../modules/system/sudo.nix
     ../../modules/system/zsh.nix

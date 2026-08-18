@@ -11,6 +11,7 @@
     MANPAGER = "sh -c 'col -bx | bat -l man -p'";
 
     LD_LIBRARY_PATH = "${config.home.profileDirectory}/lib";
+    TERMINFO_DIRS = "${config.home.profileDirectory}/share/terminfo";
     NODE_PATH = "${config.home.homeDirectory}/.npm-packages/lib/node_modules";
 
     LANG = "es_ES.UTF-8";

@@ -4,15 +4,20 @@
   home.packages = with pkgs; [
     aria2
     bat
+    btop
     bottom
     cmatrix
+    curl
     duf
     dust
     eza
     fd
     ffmpeg
+    file
     fzf
+    ghostty.terminfo
     gnupg
+    htop
     jq
     hyperfine
     imagemagick
@@ -23,6 +28,7 @@
     mpv
     ncdu
     #netwatch
+    neovim
     nmap
     ouch
     p7zip
@@ -31,12 +37,16 @@
     pv
     rclone
     ripgrep
+    rsync
     tldr
     tmux
     tree
+    unzip
+    wget
     xz
     yazi
     yt-dlp
+    zip
     zoxide
     zstd
   ];

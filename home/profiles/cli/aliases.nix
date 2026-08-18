@@ -30,5 +30,7 @@
 
     nc = "nix flake check ~/nix-config";
     rebuild = rebuildCommand;
+    nginx-serve = "nginx -e stderr -p /tmp  -c $HOME/.config/nginx/nginx.conf";
+    ff = "fastfeetch";
   };
 }
