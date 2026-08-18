@@ -15,7 +15,6 @@
     ffmpeg
     file
     fzf
-    ghostty.terminfo
     gnupg
     htop
     jq
@@ -28,7 +27,6 @@
     mpv
     ncdu
     #netwatch
-    neovim
     nmap
     ouch
     p7zip
