@@ -4,13 +4,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Qué es esto
 
-Un flake de Nix (nixpkgs `nixos-26.05`, home-manager `release-26.05`) que gestiona cinco máquinas:
+Un flake de Nix (nixpkgs `nixos-26.05`, home-manager `release-26.05`) que gestiona seis máquinas:
 
 - **pulsar** — sistema NixOS completo (aarch64-linux) con home-manager integrado como módulo de NixOS (usuario `dave`). Usa disko para el particionado de disco.
 - **mimir** — sistema NixOS completo (aarch64-linux), un appliance de red/DNS sin interfaz gráfica (usuario `nixos`). Sus servicios (Pi-hole, túnel de cloudflared, dnscrypt-proxy, msmtp) corren como contenedores OCI de Podman definidos en `hosts/mimir/services/`. Usa disko y agenix.
 - **dave@ares** — solo home-manager standalone (aarch64-darwin, macOS). Permite el paquete unfree `oracle-instantclient`.
 - **dave@hades** — solo home-manager standalone (x86_64-linux).
 - **vrubert@haddock** — solo home-manager standalone (aarch64-darwin, macOS); mismo conjunto de perfiles que dave@ares pero para el usuario `vrubert`.
+- **dave@calipso** — solo home-manager standalone (x86_64-linux). La máquina física es un Windows 11 Pro; Nix y home-manager corren dentro de WSL2, por eso la arquitectura es Linux y comparte configuración con dave@hades.
 
 ## Comandos
 
@@ -26,6 +27,7 @@ sudo nixos-rebuild switch --flake ~/nix-config#mimir
 nix run github:nix-community/home-manager/release-26.05 -- switch --flake ~/nix-config#dave@ares
 nix run github:nix-community/home-manager/release-26.05 -- switch --flake ~/nix-config#dave@hades
 nix run github:nix-community/home-manager/release-26.05 -- switch --flake ~/nix-config#vrubert@haddock
+nix run github:nix-community/home-manager/release-26.05 -- switch --flake ~/nix-config#dave@calipso   # desde la shell de WSL2
 
 # Editar un secreto de agenix (ejecutar desde secrets/; las claves se declaran en secrets/secrets.nix)
 nix run github:ryantm/agenix -- -e <nombre>.age

@@ -119,6 +119,22 @@
           ./hosts/hades/home.nix
         ];
       };
+
+      # calipso — Windows 11 Pro; home-manager corre dentro de WSL2.
+      "dave@calipso" = home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs {
+          system = "x86_64-linux";
+        };
+
+        extraSpecialArgs = {
+          inherit inputs self;
+          rebuildCommand = "nix run github:nix-community/home-manager/release-26.05 -- switch --flake ~/nix-config#dave@calipso";
+        };
+
+        modules = [
+          ./hosts/calipso/home.nix
+        ];
+      };
     };
 
   };

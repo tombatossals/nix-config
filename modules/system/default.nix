@@ -9,7 +9,7 @@
     ./locale.nix
     ./networking.nix
     ./nix.nix
-    ./pacages.nix
+    ./packages.nix
     ./sudo.nix
     ./state-version.nix
     ./users.nix

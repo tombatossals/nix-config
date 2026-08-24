@@ -1,4 +1,3 @@
-modules/system/packages.nix
 { pkgs, ... }:
 
 {
