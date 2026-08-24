@@ -70,6 +70,7 @@
             allowUnfreePredicate = pkg:
               builtins.elem (nixpkgs.lib.getName pkg) [
                 "oracle-instantclient"
+                "sqlcl"
               ];
             };
           };
@@ -91,6 +92,7 @@
             allowUnfreePredicate = pkg:
               builtins.elem (nixpkgs.lib.getName pkg) [
                 "oracle-instantclient"
+                "sqlcl"
               ];
             };
           };
@@ -136,6 +138,14 @@
         ];
       };
     };
+
+    # `nix fmt`. alejandra es el mismo formateador que ya usa lazyvim
+    # (ver home/profiles/dev/lazyvim.nix).
+    formatter = nixpkgs.lib.genAttrs [
+      "aarch64-darwin"
+      "aarch64-linux"
+      "x86_64-linux"
+    ] (system: nixpkgs.legacyPackages.${system}.alejandra);
 
   };
 }

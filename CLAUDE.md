@@ -33,7 +33,7 @@ nix run github:nix-community/home-manager/release-26.05 -- switch --flake ~/nix-
 nix run github:ryantm/agenix -- -e <nombre>.age
 ```
 
-No hay tests ni linters más allá de `nix flake check`.
+El flake expone `formatter` (alejandra), así que `nix fmt ~/nix-config` funciona. Aparte de eso y de `nix flake check`, no hay tests. Para revisar el propio Nix hay `deadnix` y `statix` en el perfil `dev`.
 
 ## Arquitectura
 
@@ -44,8 +44,10 @@ Tres capas, conectadas entre sí por `flake.nix`:
 - **`home/`** — configuración de home-manager, compartida entre todas las máquinas:
   - `home/dave/default.nix` — punto de entrada de usuario para los hosts basados en dave; selecciona qué perfiles están activos (`gui` está actualmente comentado).
   - `home/nixos/default.nix` — punto de entrada de usuario para el usuario `nixos` de mimir (solo perfil cli + plataforma linux).
-  - `home/profiles/{cli,dev,gui}` — paquetes de funcionalidad, un fichero por programa; el `default.nix` de cada directorio es solo una lista de imports.
+  - `home/profiles/{cli,dev,ops,gui}` — paquetes de funcionalidad, un fichero por programa; el `default.nix` de cada directorio es solo una lista de imports. `ops` agrupa el instrumental de administración (DNS, red, contenedores, backup, SSH declarativo, hardware) y solo lo activan los hosts de `home/dave`.
   - `home/platforms/{darwin,linux}` — añadidos específicos de cada SO que el host superpone encima.
+
+La configuración del cliente SSH de todas las máquinas vive en `home/profiles/ops/ssh.nix` (usa `programs.ssh.settings`, no el `matchBlocks` deprecado). Los `HostName` de pulsar, hades y calipso asumen resolución mDNS; solo mimir tiene IP fija declarada.
 
 **`secrets/`** — secretos cifrados con agenix. `secrets/secrets.nix` declara qué claves públicas SSH (usuario administrador + host consumidor) pueden descifrar cada fichero `.age`. Los hosts NixOS que consumen secretos importan `inputs.agenix.nixosModules.default` (ver `hosts/mimir/default.nix`).
 

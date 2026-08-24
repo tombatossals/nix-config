@@ -4,6 +4,7 @@
   imports = [
     ./aliases.nix
     ./bat.nix
+    ./delta.nix
     ./eza.nix
     ./environment.nix
     ./fastfetch

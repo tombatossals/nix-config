@@ -10,10 +10,12 @@
     #./herdr.nix
     ./lazyvim.nix
     ./nginx.nix
+    ./nix.nix
     ./node.nix
     ./opencode.nix
     ./python.nix
     ./rust.nix
+    ./shell.nix
     ./typescript.nix
   ];
 }

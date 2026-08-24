@@ -4,6 +4,7 @@
   imports = [
     ../profiles/cli
     ../profiles/dev
+    ../profiles/ops
     #../profiles/gui
   ];
 

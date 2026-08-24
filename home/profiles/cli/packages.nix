@@ -15,8 +15,10 @@
     ffmpeg
     file
     fzf
+    glow
     gnupg
     htop
+    jless
     jq
     hyperfine
     imagemagick
@@ -32,17 +34,22 @@
     p7zip
     pass
     pinentry-curses
+    procs
     pv
     rclone
     ripgrep
     rsync
+    sd
     tldr
     tmux
     tree
     unzip
+    watchexec
     wget
+    xh
     xz
     yazi
+    yq-go
     yt-dlp
     zip
     zoxide

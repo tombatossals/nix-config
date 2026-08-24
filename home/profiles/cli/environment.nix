@@ -17,11 +17,10 @@
     LANG = "es_ES.UTF-8";
     LC_ALL = "es_ES.UTF-8";
 
-    PATH = "/opt/sqlcl/bin:$HOME/.venv/bin:$HOME/.npm-packages/bin:$HOME/.npm-global/bin:$HOME/.local/bin:$PATH";
+    PATH = "$HOME/.venv/bin:$HOME/.npm-packages/bin:$HOME/.npm-global/bin:$HOME/.local/bin:$PATH";
   };
 
   home.sessionPath = [
-    "/opt/sqlcl/bin"
     "${config.home.homeDirectory}/.venv/bin"
     "${config.home.homeDirectory}/.npm-packages/bin"
     "${config.home.homeDirectory}/.npm-global/bin"
