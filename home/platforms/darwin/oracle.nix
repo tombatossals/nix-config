@@ -5,6 +5,6 @@
 {
   home.packages = with pkgs; [
     oracle-instantclient
-    sqlcl # antes instalado a mano en /opt/sqlcl/bin
+    #sqlcl # antes instalado a mano en /opt/sqlcl/bin
   ];
 }
