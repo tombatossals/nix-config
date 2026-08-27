@@ -5,7 +5,7 @@
     disk.main = {
       type = "disk";
       # SD del sistema (Raspberry Pi 4). Ruta estable por by-id.
-      device = "/dev/disk/by-id/mmc-00000_0x23681456";
+      device = "/dev/disk/by-id/mmc-SD64G_0xda585e0a";
 
       content = {
         type = "gpt";
