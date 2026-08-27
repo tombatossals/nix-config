@@ -3,10 +3,8 @@
 {
   imports = [
     inputs.agenix.nixosModules.default
-    inputs.disko.nixosModules.disko
 
     ./hardware-configuration.nix
-    ./disko.nix
     ./boot.nix
     ./users.nix
     ./networking.nix

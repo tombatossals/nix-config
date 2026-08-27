@@ -7,7 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 Un flake de Nix (nixpkgs `nixos-26.05`, home-manager `release-26.05`) que gestiona seis máquinas:
 
 - **pulsar** — sistema NixOS completo (aarch64-linux) con home-manager integrado como módulo de NixOS (usuario `dave`). Usa disko para el particionado de disco.
-- **mimir** — sistema NixOS completo (aarch64-linux), un appliance de red/DNS sin interfaz gráfica (usuario `nixos`). Sus servicios (Pi-hole, túnel de cloudflared, dnscrypt-proxy, msmtp) corren como contenedores OCI de Podman definidos en `hosts/mimir/services/`. Usa disko y agenix.
+- **mimir** — sistema NixOS completo (aarch64-linux), un appliance de red/DNS sin interfaz gráfica (usuario `nixos`). Sus servicios (Pi-hole, túnel de cloudflared, dnscrypt-proxy, msmtp) corren como contenedores OCI de Podman definidos en `hosts/mimir/services/`. Usa agenix. A diferencia de pulsar **no usa disko**: la microSD se graba con la imagen oficial `nixos-image-sd-card-*-aarch64-linux.img` y `hosts/mimir/hardware-configuration.nix` monta por etiqueta el layout que deja esa imagen (`NIXOS_SD` en `/`, `FIRMWARE` en `/boot/firmware`), porque disko formatearía la partición de firmware y dejaría la Pi sin arrancar.
 - **dave@ares** — solo home-manager standalone (aarch64-darwin, macOS). Permite el paquete unfree `oracle-instantclient`.
 - **dave@hades** — solo home-manager standalone (x86_64-linux).
 - **vrubert@haddock** — solo home-manager standalone (aarch64-darwin, macOS); mismo conjunto de perfiles que dave@ares pero para el usuario `vrubert`.
