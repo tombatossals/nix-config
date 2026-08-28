@@ -10,6 +10,13 @@
       add_newline = true;
       palette = "nord";
 
+      # Starship escanea el directorio actual para decidir qué módulos de
+      # lenguaje mostrar (detect_files/detect_extensions). El límite por
+      # defecto son 30 ms, que se agotan en directorios con muchísimas
+      # entradas — p. ej. el volumen de datos de un contenedor — y entonces
+      # avisa por stderr. 100 ms basta y sigue siendo imperceptible.
+      scan_timeout = 100;
+
       directory = {
         style = "bold fg:dark_blue";
         format = "[$path ]($style)";
