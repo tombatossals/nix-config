@@ -11,6 +11,7 @@
     ./nix.nix
     ./packages.nix
     ./sudo.nix
+    ./terminfo.nix
     ./state-version.nix
     ./users.nix
     ./zsh.nix

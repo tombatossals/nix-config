@@ -20,6 +20,7 @@
     ../../modules/system/nix.nix
     ../../modules/system/state-version.nix
     ../../modules/system/sudo.nix
+    ../../modules/system/terminfo.nix
     ../../modules/system/zsh.nix
 
     ../../modules/services/openssh
