@@ -8,7 +8,7 @@
     ./msmtp.nix
   ];
 
-  # Pi-hole, cloudflared y msmtp corren como contenedores; dnscrypt-proxy es
-  # un servicio nativo de NixOS (ver dnscrypt-proxy.nix).
+  # Pi-hole es el único servicio que corre como contenedor; dnscrypt-proxy,
+  # cloudflared y msmtp son servicios nativos de NixOS.
   virtualisation.oci-containers.backend = "podman";
 }
