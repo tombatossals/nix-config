@@ -6,6 +6,7 @@
     bat
     btop
     bottom
+    btop
     cmatrix
     curl
     duf
