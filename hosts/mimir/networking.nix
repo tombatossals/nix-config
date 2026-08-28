@@ -8,8 +8,8 @@
   networking.networkmanager.enable = false;
   networking.useDHCP = false;
 
-  # IP estática en la interfaz cableada (end0). Debe coincidir con la IP a la
-  # que hace bind Pi-hole en services/pihole.nix (192.168.4.25).
+  # IP estática en la interfaz cableada (end0). Pi-hole corre en red host, así
+  # que sirve DNS en esta misma IP; networking.nameservers apunta aquí.
   networking.interfaces.end0.ipv4.addresses = [{
     address = "192.168.4.25";
     prefixLength = 24;

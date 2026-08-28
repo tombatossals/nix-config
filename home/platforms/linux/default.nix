@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./terminfo.nix
   ];
 
   home.packages = with pkgs; [

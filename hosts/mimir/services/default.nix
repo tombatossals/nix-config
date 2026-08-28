@@ -2,13 +2,13 @@
 
 {
   imports = [
-    ./dns-network.nix
     ./cloudflared.nix
     ./dnscrypt-proxy.nix
     ./pihole.nix
     ./msmtp.nix
   ];
 
-  # Los servicios de mimir se ejecutan como contenedores gestionados por Podman.
+  # Pi-hole, cloudflared y msmtp corren como contenedores; dnscrypt-proxy es
+  # un servicio nativo de NixOS (ver dnscrypt-proxy.nix).
   virtualisation.oci-containers.backend = "podman";
 }
