@@ -9,6 +9,7 @@
 {
   home.packages = with pkgs; [
     mosh # sesiones que sobreviven a cambios de red y latencia alta
+    cloudflared # ProxyCommand del bloque hades.micronautas.com
   ];
 
   programs.ssh = {
@@ -54,6 +55,17 @@
       hades = {
         HostName = "hades.local";
         User = "dave";
+      };
+
+      # Acceso a hades desde fuera de casa: no hay puerto abierto, la sesión
+      # entra por el túnel de Cloudflare Access. Requiere `cloudflared` en el
+      # PATH (declarado arriba en home.packages) y haberse autenticado antes
+      # con `cloudflared access login hades.micronautas.com`.
+      "hades.micronautas.com" = {
+        HostName = "hades.micronautas.com";
+        User = "dave";
+        IdentityFile = "~/.ssh/id_ed25519";
+        ProxyCommand = "cloudflared access ssh --hostname %h";
       };
 
       # calipso es Windows 11 Pro: el sshd que interesa es el de dentro de
