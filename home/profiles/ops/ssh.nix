@@ -63,6 +63,16 @@
         User = "dave";
       };
 
+      # ── Routers MikroTik ────────────────────────────────────────────────
+      # El .8 (2011-uji) tiene autorizada la ed25519 id_mikrotik
+      # (huella SHA256:mY8Dst...). Se restringe a esa clave para no ofrecer
+      # antes id_ed25519 (que ese RouterOS no tiene registrada).
+      "192.168.4.8" = {
+        User = "admin";
+        IdentityFile = "~/.ssh/id_mikrotik";
+        IdentitiesOnly = "yes";
+      };
+
       "github.com" = {
         User = "git";
       };
