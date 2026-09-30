@@ -31,6 +31,7 @@
     ncdu
     #netwatch
     nmap
+    openvpn
     ouch
     p7zip
     pass
