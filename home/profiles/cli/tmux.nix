@@ -11,5 +11,9 @@
     baseIndex = 1;
     clock24 = true;
     sensibleOnTop = true;
+
+    extraConfig = ''
+      set -g renumber-windows on
+    '';
   };
 }
