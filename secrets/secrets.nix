@@ -13,4 +13,7 @@ in
   "cloudflared-token-mimir.age".publicKeys = [ admin mimir ];
   "pihole-password-mimir.age".publicKeys = [ admin mimir ];
   "login-password-mimir.age".publicKeys = [ admin mimir ];
+  # Contraseña de aplicación de Gmail para msmtp: una sola línea, sin
+  # espacios (msmtp usa la primera línea de la salida).
+  "msmtp-password-mimir.age".publicKeys = [ admin mimir ];
 }
