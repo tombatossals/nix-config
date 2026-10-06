@@ -41,7 +41,9 @@ let
       for par in ${lib.escapeShellArgs (lib.mapAttrsToList (nombre: ip: "${nombre}=${ip}") mikrotiks)}; do
         nombre=''${par%%=*}
         ip=''${par#*=}
-        if ssh -n -i id_ed25519 -o IdentitiesOnly=yes -o BatchMode=yes \
+        # Tope de 10 minutos por equipo: placas (RB750 sin CPU libre) tarda
+        # varios minutos en exportar y un router colgado no debe bloquear al resto.
+        if timeout 600 ssh -n -i id_ed25519 -o IdentitiesOnly=yes -o BatchMode=yes \
              -o ConnectTimeout=20 -o StrictHostKeyChecking=accept-new \
              -o UserKnownHostsFile="$STATE_DIRECTORY/known_hosts" \
              "backup@$ip" "/export terse" > "repo/$nombre.tmp" \
