@@ -5,6 +5,7 @@
     ./cpp.nix
     ./direnv.nix
     ./database.nix
+    ./exercism.nix
     ./gh.nix
     ./go.nix
     #./herdr.nix
