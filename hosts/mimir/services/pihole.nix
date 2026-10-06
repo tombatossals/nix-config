@@ -1,4 +1,7 @@
-{ config, host, ... }:
+{ config, host, lib, ... }:
+let
+  mikrotiks = import ./mikrotik-hosts.nix;
+in
 {
   # Directorio persistente de configuración de Pi-hole.
   systemd.tmpfiles.rules = [ "d /var/lib/pihole 0755 root root -" ];
@@ -19,6 +22,10 @@
       FTLCONF_dns_upstreams = "127.0.0.1#5053";
       FTLCONF_webserver_port = "8888";
       FTLCONF_LOCAL_IPV4 = "192.168.4.25";
+      # Registros locales <nombre>.mgmt.lan de los MikroTik. Al venir del
+      # entorno quedan de solo lectura en el panel: se cambian aquí.
+      FTLCONF_dns_hosts = lib.concatStringsSep ";"
+        (lib.mapAttrsToList (nombre: ip: "${ip} ${nombre}.mgmt.lan") mikrotiks);
     };
     # FTLCONF_webserver_api_password llega desde el secreto agenix.
     environmentFiles = [ config.age.secrets."pihole-password".path ];

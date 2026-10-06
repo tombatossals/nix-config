@@ -6,6 +6,14 @@
 #
 # Nota: se usa `programs.ssh.settings` (nombres de directiva de OpenSSH tal
 # cual); `matchBlocks` está deprecado en home-manager 26.05.
+let
+  # Acceso común a los MikroTik.
+  mikrotik = {
+    User = "admin";
+    IdentityFile = "~/.ssh/id_mikrotik";
+    IdentitiesOnly = "yes";
+  };
+in
 {
   home.packages = with pkgs; [
     mosh # sesiones que sobreviven a cambios de red y latencia alta
@@ -76,14 +84,20 @@
       };
 
       # ── Routers MikroTik ────────────────────────────────────────────────
-      # El .8 (2011-uji) tiene autorizada la ed25519 id_mikrotik
-      # (huella SHA256:mY8Dst...). Se restringe a esa clave para no ofrecer
-      # antes id_ed25519 (que ese RouterOS no tiene registrada).
-      "192.168.4.8" = {
-        User = "admin";
-        IdentityFile = "~/.ssh/id_mikrotik";
-        IdentitiesOnly = "yes";
-      };
+      # Todos tienen autorizada la ed25519 id_mikrotik (huella SHA256:mY8Dst...)
+      # en el usuario admin. Se restringe a esa clave para no ofrecer antes
+      # id_ed25519, que RouterOS no tiene registrada.
+      # Por nombre: <identidad>.mgmt.lan, registros de Pi-hole en mimir
+      # (hosts/mimir/services/mikrotik-hosts.nix).
+      "*.mgmt.lan" = mikrotik;
+      # admnet (VLAN 200): IP de gestión de los 16 equipos (CRS328 = .1).
+      "192.168.100.*" = mikrotik;
+      # IPs en capnet de los que también tienen pata ahí: CRS328, RB3011,
+      # CRS326 y 2011-uji.
+      "192.168.4.1" = mikrotik;
+      "192.168.4.2" = mikrotik;
+      "192.168.4.3" = mikrotik;
+      "192.168.4.8" = mikrotik;
 
       "github.com" = {
         User = "git";
