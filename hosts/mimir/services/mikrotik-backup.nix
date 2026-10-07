@@ -59,9 +59,11 @@ let
             # la última copia buena con una parcial.
             fallos+=("$nombre ($ip): export incompleto")
           else
-            # La primera línea lleva la fecha del export: fuera, para que git
-            # solo registre cambios reales de configuración.
-            sed '1{/ by RouterOS /d}' "repo/$nombre.tmp" > "repo/$nombre.rsc"
+            # Fuera lo que cambia sin que cambie la configuración, para que git
+            # solo registre cambios reales: la fecha del export (primera línea)
+            # y el estado de las radios wifi ("# mode: AP, SSID: …, channel: …",
+            # que varía con la ocupación o con un cambio de canal por DFS).
+            sed -e '1{/ by RouterOS /d}' -e '/^# mode: /d' "repo/$nombre.tmp" > "repo/$nombre.rsc"
           fi
         else
           fallos+=("$nombre ($ip)")
