@@ -2,6 +2,12 @@
 let
   mikrotiks = import ./mikrotik-hosts.nix;
 
+  # Equipos que no entran en la copia automática. placas (RB750, CPU al 100 %)
+  # agota el tiempo de RouterOS en varias secciones y su export sale
+  # incompleto casi siempre; se quita cuando se sustituya el equipo.
+  excluidos = [ "placas" ];
+  respaldados = lib.filterAttrs (nombre: _: !(lib.elem nombre excluidos)) mikrotiks;
+
   # Repositorio privado de GitHub al que se empuja cada copia.
   remoto = "git@github.com:tombatossals/mikrotik-backup.git";
 
@@ -38,7 +44,7 @@ let
         || git -C repo remote add origin ${lib.escapeShellArg remoto}
 
       fallos=()
-      for par in ${lib.escapeShellArgs (lib.mapAttrsToList (nombre: ip: "${nombre}=${ip}") mikrotiks)}; do
+      for par in ${lib.escapeShellArgs (lib.mapAttrsToList (nombre: ip: "${nombre}=${ip}") respaldados)}; do
         nombre=''${par%%=*}
         ip=''${par#*=}
         # Tope de 10 minutos por equipo: placas (RB750 sin CPU libre) tarda
@@ -48,13 +54,26 @@ let
              -o UserKnownHostsFile="$STATE_DIRECTORY/known_hosts" \
              "backup@$ip" "/export terse" > "repo/$nombre.tmp" \
            && grep -q "^# software id" "repo/$nombre.tmp"; then
-          # La primera línea lleva la fecha del export: fuera, para que git
-          # solo registre cambios reales de configuración.
-          sed '1{/ by RouterOS /d}' "repo/$nombre.tmp" > "repo/$nombre.rsc"
+          if grep -q "^#error exporting" "repo/$nombre.tmp"; then
+            # RouterOS se ha saltado secciones por tiempo agotado: no se pisa
+            # la última copia buena con una parcial.
+            fallos+=("$nombre ($ip): export incompleto")
+          else
+            # La primera línea lleva la fecha del export: fuera, para que git
+            # solo registre cambios reales de configuración.
+            sed '1{/ by RouterOS /d}' "repo/$nombre.tmp" > "repo/$nombre.rsc"
+          fi
         else
           fallos+=("$nombre ($ip)")
         fi
         rm -f "repo/$nombre.tmp"
+      done
+
+      # Un equipo excluido no deja en el repositorio una copia vieja o
+      # incompleta que parezca válida.
+      excluidos=(${lib.escapeShellArgs excluidos})
+      for nombre in "''${excluidos[@]}"; do
+        rm -f "repo/$nombre.rsc"
       done
 
       git -C repo add -A
