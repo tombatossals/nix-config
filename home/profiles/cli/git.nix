@@ -17,6 +17,10 @@
       init = {
         defaultBranch = "main";
       };
+      # `git pull` hace rebase en lugar de merge
+      pull = {
+        rebase = true;
+      };
 
       # difftastic bajo demanda (`git dft`), no por defecto: el diff normal
       # sigue pasando por delta (ver delta.nix).
