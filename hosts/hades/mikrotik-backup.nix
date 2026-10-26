@@ -34,6 +34,9 @@ let
 
   # id_github (deploy key con escritura, solo en el repositorio de GitHub) se
   # genera aquí la primera vez y nunca sale de hades.
+  #
+  # Los dos ssh (routers y GitHub) llevan ForwardX11=no: el ~/.ssh/config de
+  # hades lo activa y, sin pantalla, cada conexión deja un aviso de xauth.
   copia = pkgs.writeShellApplication {
     name = "mikrotik-backup";
     runtimeInputs = with pkgs; [ openssh git coreutils gnused gnugrep ];
@@ -45,7 +48,7 @@ let
       if [ ! -f id_github ]; then
         ssh-keygen -q -t ed25519 -N "" -C "mikrotik-backup@hades (deploy key)" -f id_github
       fi
-      export GIT_SSH_COMMAND="ssh -i $STATE_DIRECTORY/id_github -o IdentitiesOnly=yes -o BatchMode=yes -o ControlMaster=no -o ControlPath=none -o UserKnownHostsFile=${githubKnownHosts} -o StrictHostKeyChecking=yes"
+      export GIT_SSH_COMMAND="ssh -i $STATE_DIRECTORY/id_github -o IdentitiesOnly=yes -o BatchMode=yes -o ControlMaster=no -o ControlPath=none -o ForwardX11=no -o UserKnownHostsFile=${githubKnownHosts} -o StrictHostKeyChecking=yes"
       # Se parte del historial que ya hay en GitHub para seguir empujando encima.
       [ -d repo/.git ] || git clone -q ${lib.escapeShellArg remoto} repo
 
@@ -60,8 +63,6 @@ let
           continue
         fi
         # Tope de 10 minutos por equipo: un router colgado no debe bloquear al resto.
-        # ForwardX11=no: el ~/.ssh/config de hades lo activa y, sin pantalla,
-        # cada conexión deja un aviso de xauth en el journal.
         if timeout 600 ssh -n -i "$clave" -o IdentitiesOnly=yes -o BatchMode=yes \
              -o ControlMaster=no -o ControlPath=none -o ForwardX11=no \
              -o ConnectTimeout=20 -o StrictHostKeyChecking=accept-new \
