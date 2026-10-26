@@ -60,8 +60,10 @@ let
           continue
         fi
         # Tope de 10 minutos por equipo: un router colgado no debe bloquear al resto.
+        # ForwardX11=no: el ~/.ssh/config de hades lo activa y, sin pantalla,
+        # cada conexión deja un aviso de xauth en el journal.
         if timeout 600 ssh -n -i "$clave" -o IdentitiesOnly=yes -o BatchMode=yes \
-             -o ControlMaster=no -o ControlPath=none \
+             -o ControlMaster=no -o ControlPath=none -o ForwardX11=no \
              -o ConnectTimeout=20 -o StrictHostKeyChecking=accept-new \
              -o UserKnownHostsFile="$known_hosts" \
              "inventario@$ip" "/export terse" > "repo/$nombre.tmp" \
