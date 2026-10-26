@@ -1,7 +1,7 @@
 # Inventario de los MikroTik de la red de casa: nombre -> IP de gestión en
 # admnet (VLAN 200). Es la única lista; de aquí salen los registros DNS
-# <nombre>.mgmt.lan de Pi-hole (pihole.nix) y las copias diarias
-# (mikrotik-backup.nix). El nombre coincide con la identidad del router.
+# <nombre>.mgmt.lan de Pi-hole (pihole.nix) y las copias diarias de hades
+# (hosts/hades/mikrotik-backup.nix). El nombre coincide con la identidad del router.
 {
   crs328 = "192.168.100.1";
   rb3011-comedor = "192.168.100.2";

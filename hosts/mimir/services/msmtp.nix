@@ -3,7 +3,7 @@
   # Contraseña de aplicación de Gmail, descifrada por agenix (antes se leía de
   # /etc/nixos/msmtp-password, fichero que no existía). Queda en root:root
   # 0400: solo root puede enviar correo, que es quien lo hace (avisos de
-  # systemd como mikrotik-backup-aviso).
+  # systemd).
   age.secrets."msmtp-password".file = ../../../secrets/msmtp-password-${host}.age;
 
   programs.msmtp = {
