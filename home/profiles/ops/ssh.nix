@@ -61,7 +61,7 @@ in
       };
 
       hades = {
-        HostName = "hades.local";
+        HostName = "hades.micronautas.com";
         User = "dave";
       };
 
