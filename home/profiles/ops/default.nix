@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./android.nix
     ./backup.nix
     ./containers.nix
     ./dns.nix
