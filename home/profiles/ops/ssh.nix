@@ -80,7 +80,7 @@ in
       # WSL2, no el de Windows. Ajusta el puerto si lo reenvías.
       calipso = {
         HostName = "calipso.local";
-        User = "dave";
+        User = "nixos";
       };
 
       # ── Routers MikroTik ────────────────────────────────────────────────

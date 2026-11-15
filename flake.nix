@@ -122,15 +122,18 @@
         ];
       };
 
-      # calipso — Windows 11 Pro; home-manager corre dentro de WSL2.
-      "dave@calipso" = home-manager.lib.homeManagerConfiguration {
+      # calipso — Windows 11 Pro; home-manager corre dentro de WSL2. El nombre
+      # sigue la convención `$USER@$(hostname)` de la WSL (usuario `nixos`,
+      # hostname heredado de Windows), así que `home-manager switch --flake`
+      # lo encuentra sin tener que indicar `#nixos@calipso-win`.
+      "nixos@calipso-win" = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
           system = "x86_64-linux";
         };
 
         extraSpecialArgs = {
           inherit inputs self;
-          rebuildCommand = "nix run github:nix-community/home-manager/release-26.05 -- switch --flake ~/nix-config#dave@calipso";
+          rebuildCommand = "nix run github:nix-community/home-manager/release-26.05 -- switch --flake ~/nix-config#nixos@calipso-win";
         };
 
         modules = [

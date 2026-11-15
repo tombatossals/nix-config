@@ -11,7 +11,7 @@ Un flake de Nix (nixpkgs `nixos-26.05`, home-manager `release-26.05`) que gestio
 - **dave@ares** — solo home-manager standalone (aarch64-darwin, macOS). Permite el paquete unfree `oracle-instantclient`.
 - **dave@hades** — solo home-manager standalone (x86_64-linux).
 - **vrubert@haddock** — solo home-manager standalone (aarch64-darwin, macOS); mismo conjunto de perfiles que dave@ares pero para el usuario `vrubert`.
-- **dave@calipso** — solo home-manager standalone (x86_64-linux). La máquina física es un Windows 11 Pro; Nix y home-manager corren dentro de WSL2, por eso la arquitectura es Linux y comparte configuración con dave@hades.
+- **nixos@calipso-win** — solo home-manager standalone (x86_64-linux). La máquina física es un Windows 11 Pro; Nix y home-manager corren dentro de WSL2, por eso la arquitectura es Linux y comparte configuración con dave@hades (importa `home/dave` aunque el usuario de la WSL sea `nixos`). El nombre coincide con `$USER@$(hostname)` dentro de la WSL, de modo que `home-manager switch --flake ~/nix-config` lo encuentra sin sufijo.
 
 ## Comandos
 
@@ -27,7 +27,7 @@ sudo nixos-rebuild switch --flake ~/nix-config#mimir
 nix run github:nix-community/home-manager/release-26.05 -- switch --flake ~/nix-config#dave@ares
 nix run github:nix-community/home-manager/release-26.05 -- switch --flake ~/nix-config#dave@hades
 nix run github:nix-community/home-manager/release-26.05 -- switch --flake ~/nix-config#vrubert@haddock
-nix run github:nix-community/home-manager/release-26.05 -- switch --flake ~/nix-config#dave@calipso   # desde la shell de WSL2
+nix run github:nix-community/home-manager/release-26.05 -- switch --flake ~/nix-config#nixos@calipso-win   # desde la shell de WSL2
 
 # Editar un secreto de agenix (ejecutar desde secrets/; las claves se declaran en secrets/secrets.nix)
 nix run github:ryantm/agenix -- -e <nombre>.age

@@ -7,6 +7,8 @@
     ../../home/platforms/linux
   ];
 
-  home.username = "dave";
-  home.homeDirectory = "/home/dave";
+  # El usuario de la WSL es `nixos`; aun así se importa el punto de entrada
+  # home/dave porque se quiere el mismo conjunto de perfiles que en hades.
+  home.username = "nixos";
+  home.homeDirectory = "/home/nixos";
 }
