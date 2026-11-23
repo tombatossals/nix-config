@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 
 # Configuración declarativa del cliente SSH. Este repositorio ya conoce las
 # máquinas, así que el ~/.ssh/config sale de aquí en vez de escribirse a mano
@@ -13,6 +13,19 @@ let
     IdentityFile = "~/.ssh/id_mikrotik";
     IdentitiesOnly = "yes";
   };
+
+  # Un alias corto por router (`ssh crs328`), sacado de la misma lista que
+  # usan Pi-hole y las copias de hades. En macOS se salta por mimir: con la
+  # VPN activa, la ruta a 192.168.100.0/24 se va por el túnel y la conexión
+  # directa no llega. En los Linux de casa (hades, mimir) se va directo; en
+  # mimir el salto además sería un bucle.
+  mikrotikHosts = import ../../../hosts/mimir/services/mikrotik-hosts.nix;
+  mikrotikAliases = lib.mapAttrs (
+    _: ip:
+    mikrotik
+    // { HostName = ip; }
+    // lib.optionalAttrs pkgs.stdenv.isDarwin { ProxyJump = "mimir"; }
+  ) mikrotikHosts;
 in
 {
   home.packages = with pkgs; [
@@ -102,6 +115,7 @@ in
       "github.com" = {
         User = "git";
       };
-    };
+    }
+    // mikrotikAliases;
   };
 }

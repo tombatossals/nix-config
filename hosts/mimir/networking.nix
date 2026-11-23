@@ -15,7 +15,7 @@
     prefixLength = 24;
   }];
 
-  networking.defaultGateway = "192.168.4.1";
+  networking.defaultGateway = "192.168.4.254";
   networking.nameservers = [ "192.168.4.25" "192.168.4.10" ];
 
   # ── Firewall ──────────────────────────────────────────────────────────────
