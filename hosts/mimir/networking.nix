@@ -15,7 +15,7 @@
     prefixLength = 24;
   }];
 
-  networking.defaultGateway = "192.168.4.254";
+  networking.defaultGateway = "192.168.4.254";  # rb5009 (antes crs328)
   networking.nameservers = [ "192.168.4.25" "192.168.4.10" ];
 
   # ── Firewall ──────────────────────────────────────────────────────────────

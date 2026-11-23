@@ -106,11 +106,11 @@ in
       # admnet (VLAN 200): IP de gestión de los 16 equipos (CRS328 = .1).
       "192.168.100.*" = mikrotik;
       # IPs en capnet de los que también tienen pata ahí: CRS328, RB3011,
-      # CRS326 y 2011-uji.
+      # CRS326 y RB5009 (puerta de enlace).
       "192.168.4.1" = mikrotik;
       "192.168.4.2" = mikrotik;
       "192.168.4.3" = mikrotik;
-      "192.168.4.8" = mikrotik;
+      "192.168.4.254" = mikrotik;
 
       "github.com" = {
         User = "git";

@@ -18,10 +18,10 @@ let
   excluidos = [ "placas" ];
   respaldados = lib.filterAttrs (nombre: _: !(lib.elem nombre excluidos)) mikrotiks;
 
-  # Equipos que de noche suelen estar apagados: 2011-uji se queda sin PoE por
-  # el scheduler apaga-2011-uji de crs328. Si no responden se conserva su
-  # última copia y no cuenta como fallo.
-  puedenEstarApagados = [ "2011-uji" ];
+  # Equipos que pueden estar apagados: si no responden se conserva su última
+  # copia y no cuenta como fallo. Vacía desde que se retiró 2011-uji (el túnel
+  # de la UJI pasó al rb5009 el 2026-11-23).
+  puedenEstarApagados = [ ];
 
   # Repositorio privado de GitHub al que se empuja cada copia.
   remoto = "git@github.com:tombatossals/mikrotik-backup.git";
