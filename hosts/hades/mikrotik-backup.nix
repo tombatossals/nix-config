@@ -12,17 +12,15 @@
 let
   mikrotiks = import ../mimir/services/mikrotik-hosts.nix;
 
-  # Equipos que no entran en la copia automática. placas (RB750, CPU al 100 %)
-  # agota el tiempo de RouterOS en varias secciones y su export sale
-  # incompleto casi siempre; se quita cuando se sustituya el equipo.
-  excluidos = [ "placas" ];
+  # Equipos que no entran en la copia automática (de momento ninguno). El
+  # placas antiguo (RB750, .11) estaba aquí porque su export salía incompleto;
+  # desde el 2026-11-25 placas es el RB951 de la .4 y se copia como los demás.
+  excluidos = [ ];
   respaldados = lib.filterAttrs (nombre: _: !(lib.elem nombre excluidos)) mikrotiks;
 
   # Equipos que pueden estar apagados: si no responden se conserva su última
-  # copia y no cuenta como fallo. cap-paella está desconectado desde que se
-  # retiró aire-acondicionado (2026-11-24), que le daba PoE; volverá, y en
-  # cuanto responda se copia solo. Quitarlo de aquí cuando esté otra vez fijo.
-  puedenEstarApagados = [ "cap-paella" ];
+  # copia y no cuenta como fallo. Ahora mismo ninguno.
+  puedenEstarApagados = [ ];
 
   # Repositorio privado de GitHub al que se empuja cada copia.
   remoto = "git@github.com:tombatossals/mikrotik-backup.git";
