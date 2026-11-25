@@ -105,11 +105,9 @@ in
       "*.mgmt.lan" = mikrotik;
       # admnet (VLAN 200): IP de gestión de los 16 equipos (CRS328 = .1).
       "192.168.100.*" = mikrotik;
-      # IPs en capnet de los que también tienen pata ahí: CRS328, RB3011,
-      # CRS326 y RB5009 (puerta de enlace).
+      # IPs en capnet de los que también tienen pata ahí: CRS328 y RB5009
+      # (puerta de enlace). El resto solo se gestiona por admnet.
       "192.168.4.1" = mikrotik;
-      "192.168.4.2" = mikrotik;
-      "192.168.4.3" = mikrotik;
       "192.168.4.254" = mikrotik;
 
       "github.com" = {

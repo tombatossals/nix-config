@@ -19,9 +19,10 @@ let
   respaldados = lib.filterAttrs (nombre: _: !(lib.elem nombre excluidos)) mikrotiks;
 
   # Equipos que pueden estar apagados: si no responden se conserva su última
-  # copia y no cuenta como fallo. Vacía desde que se retiró 2011-uji (el túnel
-  # de la UJI pasó al rb5009 el 2026-11-23).
-  puedenEstarApagados = [ ];
+  # copia y no cuenta como fallo. cap-paella está desconectado desde que se
+  # retiró aire-acondicionado (2026-11-24), que le daba PoE; volverá, y en
+  # cuanto responda se copia solo. Quitarlo de aquí cuando esté otra vez fijo.
+  puedenEstarApagados = [ "cap-paella" ];
 
   # Repositorio privado de GitHub al que se empuja cada copia.
   remoto = "git@github.com:tombatossals/mikrotik-backup.git";
